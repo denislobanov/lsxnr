@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on lsxnr</title>
+    <link>http://lsxnr.com/tags/</link>
+    <description>Recent content in Tags on lsxnr</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 04 Nov 2017 19:19:51 +0000</lastBuildDate>
+    
+	<atom:link href="http://lsxnr.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Boot</title>
+      <link>http://lsxnr.com/tags/boot/</link>
+      <pubDate>Sat, 04 Nov 2017 19:19:51 +0000</pubDate>
+      
+      <guid>http://lsxnr.com/tags/boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Emergency Shell</title>
+      <link>http://lsxnr.com/tags/emergency-shell/</link>
+      <pubDate>Sat, 04 Nov 2017 19:19:51 +0000</pubDate>
+      
+      <guid>http://lsxnr.com/tags/emergency-shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Initramfs</title>
+      <link>http://lsxnr.com/tags/initramfs/</link>
+      <pubDate>Sat, 04 Nov 2017 19:19:51 +0000</pubDate>
+      
+      <guid>http://lsxnr.com/tags/initramfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mkinitcpio</title>
+      <link>http://lsxnr.com/tags/mkinitcpio/</link>
+      <pubDate>Sat, 04 Nov 2017 19:19:51 +0000</pubDate>
+      
+      <guid>http://lsxnr.com/tags/mkinitcpio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Systemd</title>
+      <link>http://lsxnr.com/tags/systemd/</link>
+      <pubDate>Sat, 04 Nov 2017 19:19:51 +0000</pubDate>
+      
+      <guid>http://lsxnr.com/tags/systemd/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

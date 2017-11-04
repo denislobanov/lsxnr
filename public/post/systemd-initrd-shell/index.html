@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.30.2" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://lsxnr.com/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="http://lsxnr.com/index.xml" type="application/rss+xml" title="lsxnr">
+<title>Forcing systemd initramfs to boot into recovery shell - lsxnr</title>
+</head>
+<body>
+
+<header>
+  <div class="container clearfix">
+    <a class="path" href="http://lsxnr.com">[lsxnr]</a>
+    <span class="caret"># _</span>
+    <div class="right">
+      
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+
+<main role="main" class="article">
+  
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2017-11-04">November 04, 2017</time></span>
+
+
+
+    <br>
+    <span class="key">tags:</span>
+    <span class="val">
+
+        <a href="http://lsxnr.comtags/initramfs">initramfs</a>
+
+        <a href="http://lsxnr.comtags/mkinitcpio">mkinitcpio</a>
+
+        <a href="http://lsxnr.comtags/systemd">systemd</a>
+
+        <a href="http://lsxnr.comtags/emergency-shell">emergency shell</a>
+
+        <a href="http://lsxnr.comtags/boot">boot</a>
+
+    </span>
+
+  </div>
+  <h1 class="headline" itemprop="headline">Forcing systemd initramfs to boot into recovery shell</h1>
+  <section class="body" itemprop="articleBody">
+    <p>I have been trying to debug an initramfs hook that I wrote, which wasnt doing what I wanted it to (namely it did literally nothing at all). Some debugging was in order. I wanted get into the initramfs image environment and see what was going on and what assumptions I have made that turned out to be incorrect.</p>
+
+<p>
+However, I am using a systemd based initramfs image so the <a href="http://jlk.fjfi.cvut.cz/arch/manpages/man/mkinitcpio.8#EARLY_INIT_ENVIRONMENT">usual</a> <code>break[=&lt;premount|postmount&gt;</code> or the legacy <code>break=y</code> wont work. Instead I had to add a <a href="https://freedesktop.org/wiki/Software/systemd/Debugging/">systemd specific</a> kernel parameter:</p>
+
+<pre><code>systemd.unit=emergency.target
+</code></pre>
+
+<p>Now I need to figure out how to get it to boot into a shell like before mounting root (like <code>break=premount</code> does).</p>
+  </section>
+</article>
+
+</main>
+
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2017  lsxnr - <a rel="author" href="http://github.com/denislobanov">Denis Igorevich Lobanov</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+
