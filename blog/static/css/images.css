@@ -1,0 +1,7 @@
+img[src$='#center-round']
+{
+    display: block;
+    margin: 0.7rem auto;
+    border-radius: 50%;
+}
+
