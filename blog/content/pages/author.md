@@ -1,6 +1,6 @@
 ---
-title: "About me"
-draft: true
+title: "About me.."
+draft: false
 ---
 
 ![a picture of me](/images/profile.jpg#center-round)
