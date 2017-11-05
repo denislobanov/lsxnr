@@ -5,6 +5,12 @@ clean() {
     git clean -fdx
 }
 
+update() {
+    git pull
+    git submodule init
+    git submodule sync
+}
+
 if [[ $# < 1 ]]
 then
     echo "Usage: $0 /path/to/ssh.key"
@@ -15,7 +21,7 @@ elif [[ $# < 2 ]]
 then
     ssh-add $1
     clean
-    git pull
+    update
 
     # recurse
     $0 $1 true
