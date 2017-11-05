@@ -13,8 +13,8 @@ update() {
 
 if [[ $# < 1 ]]
 then
-    echo "Usage: $0 /path/to/ssh.key"
-    echo "This script should be run from the blog repo"
+    echo "Usage: $(basename $0) /path/to/ssh.key"
+    echo "This script should be run from the blog repo via full path."
     exit 1
 
 elif [[ $# < 2 ]]
