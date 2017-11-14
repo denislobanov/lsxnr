@@ -1,4 +1,4 @@
-baseURL = "https://lsxnr.com"
+baseURL = "https://lsxnr.com/"
 languageCode = "en-gb"
 title = "lsxnr"
 theme = "base16"
