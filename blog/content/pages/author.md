@@ -18,9 +18,6 @@ For my FLOSS work.
 [LinkedIn](https://www.linkedin.com/in/lobanovdenis)  
 Is where you can find that exact same description but with some CV credentials.
 
-[Twitter](https://twitter.com/literally_denis)  
-For my random thoughs and ramblings.
-
 [last.fm](https://www.last.fm/user/movsb)  
 Is where you can go to find my music tastes and listening habbits (I saved the best till last).
 
