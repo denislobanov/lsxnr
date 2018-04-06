@@ -10,5 +10,5 @@ For whatever reason, I always find that any printer at work will always be the o
 I started with an existing ppd file from a similar printer in the same family; this way I didn't have to specify as much configuration about page sizes etc and, as a first attempt I just changed all the names to the new printer. Fortunately that was all it took!
 
 <br/>
-You can find the [file itself here](/misc/hl5470cdw.ppd).  
+You can find the [file itself here](/misc/hl4570cdw.ppd).  
 
