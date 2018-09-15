@@ -26,7 +26,7 @@ make PREFIX=/usr -j5 BOARD=samus
 This is fine for 4 core systems, however my desktop has 8 and I would like to use more. If I build this on my chromebook, it only has 2 cores so `j5` would actually launch more make processes than is optimal for my system. This parameter is an optimisation and should be left to the users system configuration in `/etc/makepkg.conf`. I will need to submit a PR or something on this AUR package to fix it...
 
 <br/>
-## Exploring ec Makefiles
+## Building ectool
 Build output is inside the `build` directory and looks something like this: 
 ```sh
 build
@@ -54,7 +54,7 @@ build
 So `ectool` is a "util", interestingly some libraries are also built.  
 
 <br/>
-## Building ectool
+## Exploring ec Makefiles
 The main files of interest are *Makefile.rules* and *util/build.mk*. Figuring out whats going on exactly will take you on a fantastic adventure through the whole repo but hopefully I'll mention enough to provide a guide for quick traversal.
 
 *Makefile.rules* defines a PHONY `utils` target. `utils-host` builds ectool, `utils-art` gives us the *export_taskinfo.so* library. Lets look at utils-host first, in *Makefile.rules*; this depends on `host-utils`, which will build sources defined by `host-srcs`:
@@ -73,7 +73,7 @@ util/comm-dev.c util/comm-host.c util/comm-i2c.c util/comm-lpc.c util/ec_flash.c
 ```make
 $(foreach u,$(build-util-art),$(out)/$(u))
 ```  
-The interesting things happen in `build.mk`, we define how to build `export_taskinfo.so` (in $out) here:
+The interesting things happen in `build.mk`, we define how to build `export_taskinfo.so` (in `$out`) here:
 ```make
 $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
         $(out)/util/export_taskinfo_rw.o
@@ -132,6 +132,7 @@ int ec_command(int command, int version,
 				indata, insize);
 }
 ```  
+<br/>
 A little grep gives interesting results:
 ```sh
 > grep ec_command_proto * -R
