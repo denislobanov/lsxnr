@@ -10,7 +10,7 @@ I have been trying to debug an initramfs hook that I wrote, which wasnt doing wh
 <!--more-->
 However, I am using a systemd based initramfs image so the [usual](http://jlk.fjfi.cvut.cz/arch/manpages/man/mkinitcpio.8#EARLY_INIT_ENVIRONMENT) `break[=<premount|postmount>` or the legacy `break=y` wont work. Instead I had to add a [systemd specific](https://freedesktop.org/wiki/Software/systemd/Debugging/) kernel parameter:
 
-```
+```cfg
 systemd.unit=emergency.target
 ```
 

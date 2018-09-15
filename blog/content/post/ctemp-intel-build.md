@@ -1,5 +1,5 @@
 ---
-title: "Dell Chromebook fan control - Part I: The Intel ec build system"
+title: "Dell Chromebook fan control - Part I: The ec build system"
 date: 2018-09-15T15:55:17+01:00
 draft: false
 tags: ["ctempd", "chromebook", "engineering log"]
@@ -16,11 +16,11 @@ Before I decide on the language for this project and thus the build system it wi
 My first step was cloning `ectool-samus-git` from the Arch Linux User Repository (AUR), and having a look at how `ectool` is built on my platform. This also nicely provides me with the list of build tools that I will need. A simple `makepgk -s` will suffice here.  
 
 It's a pretty straighforward `PKGBUILD`, we can see that in the `build()` hook one substitution is needed:
-```
+```make
 sed -i "s/-Werror /-std=gnu90 /g" Makefile.toolchain
 ```  
 There is a little bug on the next line too, we build using:
-```
+```make
 make PREFIX=/usr -j5 BOARD=samus
 ```
 This is fine for 4 core systems, however my desktop has 8 and I would like to use more. If I build this on my chromebook, it only has 2 cores so `j5` would actually launch more make processes than is optimal for my system. This parameter is an optimisation and should be left to the users system configuration in `/etc/makepkg.conf`. I will need to submit a PR or something on this AUR package to fix it...
@@ -28,7 +28,7 @@ This is fine for 4 core systems, however my desktop has 8 and I would like to us
 <br/>
 ## Exploring ec Makefiles
 Build output is inside the `build` directory and looks something like this: 
-```
+```sh
 build
 └── samus
     ├── ec_version.h
@@ -58,7 +58,7 @@ So `ectool` is a "util", interestingly some libraries are also built.
 The main files of interest are *Makefile.rules* and *util/build.mk*. Figuring out whats going on exactly will take you on a fantastic adventure through the whole repo but hopefully I'll mention enough to provide a guide for quick traversal.
 
 *Makefile.rules* defines a PHONY `utils` target. `utils-host` builds ectool, `utils-art` gives us the *export_taskinfo.so* library. Lets look at utils-host first, in *Makefile.rules*; this depends on `host-utils`, which will build sources defined by `host-srcs`:
-```
+```make
 $(foreach u,$(host-util-bin),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
 ```
 
@@ -70,17 +70,17 @@ util/comm-dev.c util/comm-host.c util/comm-i2c.c util/comm-lpc.c util/ec_flash.c
 ```
 
 `utils-art` builds a shared library, convinient since I want a library containing all the things that `ectool` calls into to change fan speeds (will mention code exploration later); here we call `build-art` which simply adds the build destination to all objects defined in `build-util-art`: 
-```
+```make
 $(foreach u,$(build-util-art),$(out)/$(u))
 ```  
 The interesting things happen in `build.mk`, we define how to build `export_taskinfo.so` (in $out) here:
-```
+```make
 $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
         $(out)/util/export_taskinfo_rw.o
 $(call quiet,link_taskinfo,BUILDLD)
 ```  
 The other two `.o` files are defined on the following lines, but the `$(call` is interesting. `link_taskinfo` can be found in *Makefiles.rules* again, I can't remember the process I went through to find how `call` works so will have to update this post later. It will however call into `cmd_link_taskinfo` in *Makefiles.rules*:
-```
+```make
 cmd_link_taskinfo = $(BUILDCC) $(BUILD_CFLAGS) --shared -fPIC $^ \
 	$(BUILD_LDFLAGS) -flto -o $@
 ```
@@ -133,8 +133,8 @@ int ec_command(int command, int version,
 }
 ```  
 A little grep gives interesting results:
-```
-grep ec_command_proto * -R
+```sh
+> grep ec_command_proto * -R
 comm-dev.c:		ec_command_proto = ec_command_dev_v2;
 comm-dev.c:		ec_command_proto = ec_command_dev;
 comm-host.c:int (*ec_command_proto)(int command, int version,
@@ -166,7 +166,7 @@ r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd);
 ```
 
 I can't say this is surprising, but it is a nice result since theoretically that means I don't actually need much in the way of dependencies for my little daemon - I can make ioctl calls too! Incidentally `ec_command_dev()` is nothing surprising either 
-```
+```c
 r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd);
 ```  
 Interesting though is that `s_cmd` here passed by reference than by value. I though it was a bug until I realised that in `ec_command_dev()` s_cmd is declared as
@@ -191,4 +191,4 @@ A bit more complex, but still an `ioctl`.
 Finally `comm-lpc.c` is a bit different. I think it might be bitblasting, but I dont really want to spend too much time on code right now, there is a more important question that I brushed over which I will have to answer now - which one of these implementation functions actually gets called (remember we just have `ec_command_proto()` everywhere else), and who does the linking? Truthfully I think the first time I looked over this I went into the deep end and found the answer in the build system (I *think* `board.h` in `board/samus/` provides the clue, but no longer can I remember). It's probable that we will have to revisit this topic when we start implemention, but for now - for this post - it will suffice...
 
 <br/>
-##### It is at this point that I realise that these theme isn't great for technical posts...
+##### It is at this point that I realise that these theme isn't great for technical posts, but I will try to tweak it...

@@ -3,6 +3,10 @@ languageCode = "en-gb"
 title = "lsxnr"
 theme = "base16"
 
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+
 [params]
     [[params.customCSS]]
         href = "css/images.css"

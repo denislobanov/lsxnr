@@ -9,7 +9,7 @@ As part of the move away from a proprietary in memory database `madb`, [last.fm]
 
 <!--more-->
 We deploy a dockerised version of Cassandra, but the standard image doesn't support monitoring via [Prometheus](https://prometheus.io/). It's easy to add however - all you need is a JMX java agent, and one for Prometheus [already exists](https://github.com/prometheus/jmx_exporter). Initially our Dockerfile looked something like this:
-```
+```Dockerfile
 FROM cassandra
 
 ADD "http://central.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.10/jmx_prometheus_javaagent-0.10.jar" /usr/local/lib/jmx_prometheus_javaagent.jar
@@ -24,7 +24,7 @@ However trying to run this resulted in a nice stack trace rather than a running 
 </br>
 ## java.net.BindException: Address already in use
 I first wrote our Dockerfile to use `ENV JVM_OPTS`, however it seems the problem is that if the `jmx_prometheus_javaagent` jar is defined in `JVM_OPTS` for the whole container it gets started before Cassandra. So the solution was a small rewrite, adding the `JVM_OPTS` line to `cassandra-env.sh` instead. Our Dockerfile thus became something like this:  
-```
+```Dockerfile
 FROM cassandra
 
 ADD "http://central.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.10/jmx_prometheus_javaagent-0.10.jar" /usr/local/lib/jmx_prometheus_javaagent.jar
