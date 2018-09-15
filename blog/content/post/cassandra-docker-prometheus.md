@@ -1,7 +1,7 @@
 ---
 title: "Monitoring Dockerised Cassandra with Prometheus"
 date: 2017-11-13T12:15:52Z
-tags: ["cassandra", "prometheus", "docker"]
+tags: ["cassandra", "prometheus", "docker", "devops"]
 draft: false
 ---
 

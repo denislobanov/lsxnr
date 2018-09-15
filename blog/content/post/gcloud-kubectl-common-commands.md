@@ -1,8 +1,8 @@
 ---
 title: "Common commands for namespaced projects running in cloud"
 date: 2018-04-16T14:22:10Z
-tags: ["gcloud", "kubernetes", "common commands"]
-draft: true
+tags: ["kubernetes", "devops"]
+draft: false
 ---
 
 This is nothing new, special or otherwise more than what you can find by just looking over the [Kubernetes Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/). 

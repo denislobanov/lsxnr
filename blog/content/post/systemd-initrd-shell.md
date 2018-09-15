@@ -1,8 +1,7 @@
 ---
 title: "Forcing systemd initramfs to boot into recovery shell"
-tags: [initramfs, mkinitcpio, systemd, emergency shell, boot]
+tags: ["linux", "systemd"]
 date: 2017-11-04T19:19:51Z
-author: movsb
 draft: false
 ---
 
