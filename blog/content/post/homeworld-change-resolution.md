@@ -1,5 +1,5 @@
 ---
-title: "Change resolution and rendered in Homeworld under wine"
+title: "Change resolution and renderer in Homeworld under wine"
 date: 2018-09-16T18:51:41+01:00
 draft: false
 tags: ["wine", "linux", "gaming"]
@@ -86,3 +86,5 @@ Quit once it starts. The relevant registry entries have been added, now we just 
 
 <br/>
 The pertinent ones are `"deviceToSelect"="d3d"`, which gets us using **D3D** (I will need to explore getting OGL to work next), `"screenDepth"=dword:00000020` which gives us 32 bit depth, and `screenWidth` & `screenHeigh` which I've set to 2560x1440. Of course, you can now just add these registery keys yourself and not bother with the CLI options, but I do suggest trying `/pilotView` if you haven't :)
+
+##### Edit: At 2k Homeworld starts to struggle, I'm getting mouse pointer trails everywhere... Maybe I'll buy Homeworld Remastered (and upgrade to some 4K monitors), if it can run on Linux. In fact I found that this is a problem under all resolutions above 1600x1200 that I tried.
