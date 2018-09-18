@@ -149,4 +149,53 @@ $ nm ctemp.so
 {{< / highlight >}}
 
 ## Writing some code
-Now that we can build a shared library, it is time to gather all our Java Enterprise Design Pattern knowledge and build the best ObservableDelegateECCommandTestFactoryPoolManager to test this function call :) 
+Now that we can build a shared library, it is time to gather all our Java Enterprise Design Pattern knowledge and build the best ObservableDelegateECCommandTestFactoryPoolManager to test this function call :) Well not quite, *ectool.c* already contains a function that makes a basic `ec_command` call: `cmd_hello()`; we can simply rip it out into our own file and see if we can build a standalone app that links into our library. So our new *.c* file looks something like this:  
+```c
+#include <stdio.h>
+#include "comm-host.h"
+
+int main(int argc, char *argv[])
+{
+	struct ec_params_hello p;
+	struct ec_response_hello r;
+	int rv;
+
+	p.in_data = 0xa0b0c0d0;
+
+	rv = ec_command(EC_CMD_HELLO, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	if (r.out_data != 0xa1b2c3d4) {
+		fprintf(stderr, "Expected response 0x%08x, got 0x%08x\n",
+			0xa1b2c3d4, r.out_data);
+		return -1;
+	}
+
+	printf("EC says hello!\n");
+	return 0;
+}
+```
+
+Clever stuff, though it fails to build. This failure is important and we will need to remember how we solve it when we are setting up a build system for our app (I renamed ctemp.so to libctemp.so):
+```
+$ gcc -I. -I../include/ -L../build/samus/util -l:ctemp.so -o test test.c
+In file included from ../include/common.h:101,
+                 from comm-host.h:12,
+                 from test.c:2:
+../include/config.h:3047:10: fatal error: config_chip.h: No such file or directory
+ #include "config_chip.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+```
+
+<br/>
+The problem is that *config_chip.h* depends on which hardware you are buliding for. The correct one is selected by the ec build system but our gcc comand does not - in fact it knows nothing of the target platform. I will have to refresh my memory here and discover how this choice is made. Chip is defined by `build.mk` under **boards/samus**:
+```make
+CHIP:=lm4
+```
+Since this is a pretty simple var export we can try add **chip/lm4/** to the *gcc* include path, but this directory contains a *build.mk* of its own which defines `CORE` and `CFLAGS_CPU`. It's getting to that point where we will want proceduraly pick up *build.mk*'s in our own build system; however we can now build our test file:
+```
+$ gcc -I. -I../include/ -I../chip/lm4/ -I.. -I../board/samus/ -I../test/ -L../build/samus/util -l:ctemp.so  -std=gnu90 -march=armv7e-m -mcpu=cortex-m4 -o test test.c  
+$
+```
