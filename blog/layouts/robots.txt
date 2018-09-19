@@ -1,0 +1,9 @@
+User-agent: *
+
+Disallow: /css/
+Disallow: /img/
+Disallow: /images/
+Disallow: /misc/
+Disallow: /tags/
+Disallow: /categories/
+
