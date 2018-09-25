@@ -1,5 +1,5 @@
 ---
-title: "Common commands for namespaced projects running in cloud"
+title: "Common commands for namespaced projects running in gcloud"
 date: 2018-04-16T14:22:10Z
 tags: ["kubernetes", "devops"]
 draft: false
