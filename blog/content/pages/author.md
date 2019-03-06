@@ -6,7 +6,7 @@ draft: false
 ![a picture of me](/images/profile.jpg#center-round)
 </br>
 
-By day I am a software engineer working on the data team over at [last.fm](https://last.fm) but by night, I am also a software engineer - albeit a sleepy one.
+By day I am a software engineer working on the energy team over at [Utility Warehouse](https://www.utilitywarehouse.co.uk/) but by night, I am also a software engineer - albeit a sleepy one.
 
 <!--more-->
 I am also rider of motorbikes and a maker of music (the last one is debatable). This blog is something that I started as a sort of `/dev/null` for my thoughs, and somewhere to store some notes so I can figure out how I ever managed to hack that thing together!
