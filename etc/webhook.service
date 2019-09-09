@@ -1,0 +1,9 @@
+[Unit]
+Description=Small server for creating HTTP endpoints (hooks)
+Documentation=https://github.com/adnanh/webhook/
+
+[Service]
+ExecStart=/usr/bin/webhook -ip 127.0.0.1 --port 8080 -nopanic -hooks /etc/webhook/hooks.json
+
+[Install]
+WantedBy=multi-user.target
