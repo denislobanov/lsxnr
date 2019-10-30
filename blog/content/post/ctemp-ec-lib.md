@@ -279,3 +279,6 @@ ctemp_c_to_host = $(HOSTCC) $(HOST_CFLAGS) $(HOST_LDFLAGS) -o $@ $(1) $(2)
 And voila! We have a working "hello world" of sorts that can talk to the **EC** on my Chromebook. Next time we write *even MORE* Makefiles, to get the *.o* files out of *util/*; then we set up a basic CMake project to build our test binary linking to "external" *.o* files. Once we can do that, we can start writing some actual code, knowing that we will be able to talk to hardware when we compile.
 
 In the mean time I'm going to investigate some C++ unit testing frameworks.
+
+
+[Part III >>>](https://lsxnr.com/post/ctemp-cmake/)

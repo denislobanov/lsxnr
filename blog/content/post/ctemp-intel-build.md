@@ -191,5 +191,7 @@ A bit more complex, but still an `ioctl`.
 <br/>
 Finally `comm-lpc.c` is a bit different. I think it might be bitblasting, but I dont really want to spend too much time on code right now, there is a more important question that I brushed over which I will have to answer now - which one of these implementation functions actually gets called (remember we just have `ec_command_proto()` everywhere else), and who does the linking? Truthfully I think the first time I looked over this I went into the deep end and found the answer in the build system (I *think* `board.h` in `board/samus/` provides the clue, but no longer can I remember). It's probable that we will have to revisit this topic when we start implemention, but for now - for this post - it will suffice...
 
+[Part II >>>](https://lsxnr.com/post/ctemp-ec-lib/)
+
 <br/>
 ##### It is at this point that I realise that these theme isn't great for technical posts, but I will try to tweak it...
