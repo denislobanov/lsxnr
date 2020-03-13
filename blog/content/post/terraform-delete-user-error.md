@@ -1,5 +1,5 @@
 ---
-title: "Terraform: Cannot delete entity, must delete policies first."
+title: "Terraform: Cannot delete entity, must delete policies first"
 date: 2020-02-25T10:23:04Z
 draft: false 
 tags: ["terraform", "aws"]
