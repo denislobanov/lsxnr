@@ -9,6 +9,8 @@ pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 
 [params]
+    author = "Denis Igorevich Lobanov"
+
     Paginate = 10
     [[params.customCSS]]
         href = "css/images.css"
