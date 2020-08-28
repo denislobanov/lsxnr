@@ -9,6 +9,7 @@ pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 
 [params]
+    Paginate = 10
     [[params.customCSS]]
         href = "css/images.css"
 
