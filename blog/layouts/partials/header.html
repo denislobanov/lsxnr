@@ -9,6 +9,13 @@
 {{- with $.Param "author" }}
 <meta name="author" content="{{ . }}">
 {{- end }}
+{{ range .Site.Params.customCSS }}
+ {{ if isset . "href" }}
+        <link {{ if not (isset . "rel") }}rel="stylesheet" {{ end }}{{ range $key, $value := . }} {{ if eq $key "href" }}{{ (printf "%s=\"%s\"" $key ($value | absURL)) | safeHTMLAttr }}{{ else }}{{ (printf "%s=\"%s\"" $key (string $value)) | safeHTMLAttr }}{{ end }}{{ end }}>
+      {{ else }}
+        <link rel="stylesheet" href="{{ . | absURL }}">
+      {{ end }}
+{{ end }}
 {{ hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" type="text/css">
