@@ -5,15 +5,22 @@ draft: false
 tags: ["wine", "linux", "gaming"]
 ---
 
-There are very few computer games that I think have *really* captured my imagination, Homeworld is one of them. I still have the original CD and box so I though it best to clone it for safekeeping. So after borrowing a USB CD drive and running `dd` I decided to launch it for some nostalgia. Turns out though you can't change the resolution in-game due to a wine bug, two in fact:  
-[Bug 23714 - Homeworld : Can't change resolution](https://bugs.winehq.org/show_bug.cgi?id=23714)  
-[Bug 38763 - Homeworld hangs when changing screen resolution or switching renderer](https://bugs.winehq.org/show_bug.cgi?id=38763)  
+There are very few computer games that I think have *really* captured my
+imagination, Homeworld is one of them. I still have the original CD and box so I
+though it best to clone it for safekeeping. So after borrowing a USB CD drive
+and running `dd` I decided to launch it for some nostalgia. Turns out though you
+can't change the resolution in-game due to a wine bug, two in fact:  
 
-<br/>
-However running a game at 640 on a 32" 2K monitor is a bit... Too nostalgic. :) We can work around this bug by forcing *homeworld.exe* to start at our desired resolution, and with a different renderer rather than switching later; and we can make it convenient by setting this in the registry. You can run `wine homeworld.exe /help` to see all your options:
-<br/>
-<br/>
-```
+1. [Bug 23714 - Homeworld : Can't changeresolution](https://bugs.winehq.org/show_bug.cgi?id=23714)
+1. [Bug 38763 - Homeworld hangs when changing screen resolution or switching renderer](https://bugs.winehq.org/show_bug.cgi?id=38763)
+
+However running a game at 640 on a 32" 2K monitor is a bit... Too nostalgic. :)
+We can work around this bug by forcing *homeworld.exe* to start at our desired
+resolution, and with a different renderer rather than switching later; and we
+can make it convenient by setting this in the registry. You can run `wine
+homeworld.exe /help` to see all your options:
+
+```cmd
 Invalid or unrecognised command line option: '/help'
 
 SYSTEM OPTIONS
@@ -66,14 +73,15 @@ MISC OPTIONS
     /pilotView - enable pilot view.  Focus on single ship and hit Q to toggle.
 ```
 
-<br/>
 So first step is to run iw with something other than `sw`:
+
 ```sh
 wine homeworld.exe /disableAVI /device d3d /1600
 ```
 
-<br/>
-Quit once it starts. The relevant registry entries have been added, now we just tweak them (some lines removed):
+Quit once it starts. The relevant registry entries have been added, now we just
+tweak them (some lines removed):
+
 ```
 [HKEY_LOCAL_MACHINE\Software\Wow6432Node\Sierra On-Line\Homeworld]
 "d3dToSelect"=""
@@ -84,7 +92,11 @@ Quit once it starts. The relevant registry entries have been added, now we just 
 "screenWidth"=dword:00000a00
 ```
 
-<br/>
-The pertinent ones are `"deviceToSelect"="d3d"`, which gets us using **D3D** (I will need to explore getting OGL to work next), `"screenDepth"=dword:00000020` which gives us 32 bit depth, and `screenWidth` & `screenHeigh` which I've set to 2560x1440. Of course, you can now just add these registery keys yourself and not bother with the CLI options, but I do suggest trying `/pilotView` if you haven't :)
+The pertinent ones are `"deviceToSelect"="d3d"`, which gets us using **D3D** (I
+will need to explore getting OGL to work next), `"screenDepth"=dword:00000020`
+which gives us 32 bit depth, and `screenWidth` & `screenHeigh` which I've set to
+2560x1440. Of course, you can now just add these registery keys yourself and not
+bother with the CLI options, but I do suggest trying `/pilotView` if you haven't
+:)
 
 ##### Edit: At 2k Homeworld starts to struggle, I'm getting mouse pointer trails everywhere... Maybe I'll buy Homeworld Remastered (and upgrade to some 4K monitors), if it can run on Linux. In fact I found that this is a problem under all resolutions above 1600x1200 that I tried.
