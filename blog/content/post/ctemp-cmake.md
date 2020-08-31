@@ -70,6 +70,7 @@ ExternalProject_Add(ectool
     PREFIX=${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/ec/
 )
 ```  
+
 You'll notice we're already including out patch file here in the
 `CONFIGURE_COMMAND` - _ec.patch_. More on to this later.  
 

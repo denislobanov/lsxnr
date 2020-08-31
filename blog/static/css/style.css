@@ -207,7 +207,7 @@ footer a {
 }
 
 .homepage h1.site-title {
-  text-align: center;
+  text-align: left;
   font-size: 5em;
   color: #66cccc;
   color: var(--base0c);

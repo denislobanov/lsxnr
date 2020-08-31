@@ -7,7 +7,17 @@
   <img src="{{ $baseurl }}img/base16-eighties.svg">
 </div>
 
-<div style="text-align: center;">
-  A clever man learns from his mistakes, a wise man learns from the mistakes of others.
-</div>
+<div id="tagline" style="text-align: center;"></div>
+<script>
+        var taglines = ["A clever man learns from his mistakes, a wise man learns from the mistakes of others.",
+            "/dev/null for my thoughts.",
+            "I write to remeber why I wrote.",
+            "Wisdom from the command line.",
+            "Maybe this will remind me why I wrote that.",
+            "Desperaletly trying to come up with a tagline.",
+            "Is it working?",
+            "Quality content for bots and automated crawlers."];
+        var x = Math.floor(Math.random() * taglines.length);
+        document.getElementById('tagline').innerHTML = taglines[x];
+    </script>
 
