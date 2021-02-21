@@ -12,7 +12,7 @@ engineer - albeit a sleepy one.
 
 <!--more-->
 I am also rider of motorbikes and a maker of music (the last one is debatable).
-This blog is something that I started as a sort of `/dev/null` for my thoughs,
+This blog is something that I started as a sort of `/dev/null` for my thoughts,
 and somewhere to store some notes so I can figure out how I ever managed to hack
 that thing together!
 
@@ -27,6 +27,6 @@ For the rest of my FLOSS and less OSS work.
 Is where you can find that exact same description but with some CV credentials.
 
 [last.fm](https://www.last.fm/user/movsb)  
-Is where you can go to find my music tastes and listening habbits (I saved the
+Is where you can go to find my music tastes and listening habits (I saved the
 best till last).
 
