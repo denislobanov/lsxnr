@@ -177,7 +177,7 @@ in a single binary.
 
 1. You're still managing a k8s stack
 
-### My mustache brings all the gentlemen to the bardbers: Openstack
+### My mustache brings all the gentlemen to the barbers: Openstack
 
 Actually, this is going one level up - you use this to build a cloud onto which
 you deploy k8s et al. If kubernetes is a hammer, then this is a mallet and I'm
