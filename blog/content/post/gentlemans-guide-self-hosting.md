@@ -259,7 +259,6 @@ Or simply: SCRAP.
 
 It does exactly what it sounds like  ͡° ͜ʖ ͡ –
 
-<br/>
 ## TL;DR
 
 As a sort of epilogue, I would like to give a TL;DR summary of the content
