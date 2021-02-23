@@ -258,3 +258,42 @@ Allocation and Provisioning.
 Or simply: SCRAP.
 
 It does exactly what it sounds like  ͡° ͜ʖ ͡ –
+
+<br/>
+## TL;DR
+
+As a sort of epilogue, I would like to give a TL;DR summary of the content
+above, and discuss the reason for this post:
+
+### I want to get my feet wet, where do I start?
+
+You probably already know of a few curated awesome-xxxx lists well, there is one
+for self hosted software and deployment configurations: https://github.com/awesome-selfhosted/awesome-selfhosted
+
+1. Use that as your guide for _what_ part of your digital life you want to self-host.
+1. Understand that self-hosting doesn't mean own hardware. You can still run this
+   in someone else's computer (DO/AWS/etc).
+
+If you are ready for the own hardware adventure:
+
+1. Make a list of exactly what you have _today_ that you will need to run. There
+   can always be more tomorrow, but first consider what you are willing to port
+   right now. And focus on porting, not standing up a new service; as this
+   removes one unknown.
+1. Consider your SLAs, this will influence the kind of hardware you need (UPS's,
+   RAID, mobile broadband for failover, etc).
+1. Consider your security model, if only a little.
+1. Based on SLAs considerations, decide if you want managed deployments.
+1. Based on your desired SLAs and security models, consider if you want
+   virtualised deployments.
+1. The outcomes of the last two points are your decision of whether or not to
+   essentially run a private cloud.
+1. Get your feet wet and run a single node! :))
+
+### Why I'm making SCRAP
+
+I hope that eventually SDS/SCRAP will become a simple and lightweight system for
+managing containarised deployments, giving you the benefit of a private cloud
+with something like k3s but without forcing you to denormalise your deployments.
+
+( ✧≖ ͜ʖ≖)
