@@ -3,12 +3,11 @@
   <span class="base05">[</span><span class="base09">lsxnr</span><span class="base05">]</span><span class="base05"># _</span>
 </h1>
 
-<div id="tagline"></div>
-
 <div class="hero-logo">
   <img src="{{ $baseurl }}img/base16-eighties.svg">
 </div>
 
+<div id="tagline"></div>
 <script>
     var taglines = ["A clever man learns from his mistakes, a wise man learns from the mistakes of others.",
         "/dev/null for my thoughts.",
@@ -21,6 +20,5 @@
         "My go code never panics, it exits in an orderly fashion.",
         "Quality content for bots and automated crawlers."];
     var x = Math.floor(Math.random() * taglines.length);
-    document.getElementById('tagline').innerHTML = taglines[x];
+    document.getElementById('tagline').textContent = taglines[x];
 </script>
-

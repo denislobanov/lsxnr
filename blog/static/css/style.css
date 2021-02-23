@@ -238,10 +238,9 @@ footer a {
 
 #tagline {
   text-align: center;
+  line-height: 1.25;
   color: #f2f0ec;
   color: var(--base07);
-  height: auto;
-  width: auto;
 }
 
 .homepage section.categories,
