@@ -17,16 +17,16 @@ then
     echo "This script should be run from the blog repo via full path."
     exit 1
 
-elif [[ $# < 2 ]]
+elif [[ $# == 1 ]]
+then
+    ssh-agent $0 $1 true
+
+elif [[ $# == 2 ]]
 then
     ssh-add $1
     clean
     update
 
-    # recurse
-    $0 $1 true
-
-else
     hugo -s blog -d /var/www/lsxnr/public
 fi
 
