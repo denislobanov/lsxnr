@@ -27,6 +27,10 @@ then
     clean
     update
 
+    # trigger future updates
+    $0 $1 $2 true
+
+else
     hugo -s blog -d /var/www/lsxnr/public
 fi
 
