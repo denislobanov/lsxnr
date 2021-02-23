@@ -236,6 +236,12 @@ footer a {
   width: 100%;
 }
 
+.homepage .tagline {
+  text-align: center;
+  color: #2d2d2d;
+  color: var(--base00);
+}
+
 .homepage section.categories,
 .homepage section.tags {
   padding-left: 2rem;
