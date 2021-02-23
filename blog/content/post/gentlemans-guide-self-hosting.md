@@ -252,10 +252,9 @@ well-endowed gentlemen).
 
 ## Crysalis
 
-Having these ideas in mind, I decided to make such a Simple Distributed System
-for Cluster Resource Allocation and Provisioning.
+Having these ideas in mind, I decided to make such a System for Cluster Resource
+Allocation and Provisioning.
 
-Or simply: SDS for CRAP.
+Or simply: SCRAP.
 
-Because when k8s is your hammer, every problem is a nail. But sometimes an SDS
-drill is faster.
+It does exactly what it sounds like  ͡° ͜ʖ ͡ –
