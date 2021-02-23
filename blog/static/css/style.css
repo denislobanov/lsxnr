@@ -236,12 +236,11 @@ footer a {
   width: 100%;
 }
 
-.homepage .tagline  {
+.tagline {
   text-align: center;
-  line-height: inherit;
+  display: inline-block;
   color: #f2f0ec;
   color: var(--base07);
-  overflow: auto;
 }
 
 .homepage section.categories,
