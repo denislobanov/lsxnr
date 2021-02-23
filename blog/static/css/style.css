@@ -236,7 +236,7 @@ footer a {
   width: 100%;
 }
 
-#tagline {
+.homepage .tagline  {
   text-align: center;
   line-height: inherit;
   color: #f2f0ec;
