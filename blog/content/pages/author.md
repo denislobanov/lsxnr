@@ -16,7 +16,6 @@ This blog is something that I started as a sort of `/dev/null` for my thoughts,
 and somewhere to store some notes so I can figure out how I ever managed to hack
 that thing together!
 
-</br>
 [GitLab](https://gitlab.com/denislobanov)
 For some of my FLOSS work.
 
