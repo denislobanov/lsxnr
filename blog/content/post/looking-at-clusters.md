@@ -249,8 +249,8 @@ simple as SSH + crontab.
 The _only_ things I would miss, is automatic workload migration when
 de-provisioning a server - I would have to run ansible manually; though
 technically deprovisioning even a k8s node still requires manual interaction to
-taint & drain it. I also would not get the safety of automatic hardware failover
-- in other words, pod migration if one node dies. But have a look at my SLA
+taint & drain it. I also would not get the safety of automatic hardware failover - in 
+other words, pod migration if one node dies. But have a look at my SLA
 times again. They're pretty lax; lax enough that as long as I have decent data
 availability, I could simply spin up the dead jails in a new node by taking the
 last known snapshot from my local hot/online backups.
