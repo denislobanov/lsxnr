@@ -5,21 +5,38 @@ tags: ["Urho3D"]
 draft: false
 ---
 
-There are a few resources online for setting up an empty project in Urho3D - even a github repo by the same name [Urho3D-Empty-Project](https://github.com/ArnisLielturks/Urho3D-Empty-Project), but after having tried myself to create a basic "hello world" from scratch, I found them to either be a misnomer (as in the case of the _"empty project"_ repo) or incomplete. This assumes you are going to use the Urho3D CMake build system as much as possible.
+There are a few resources online for setting up an empty project in Urho3D -
+even a github repo by the same name
+[Urho3D-Empty-Project](https://github.com/ArnisLielturks/Urho3D-Empty-Project),
+but after having tried myself to create a basic "hello world" from scratch, I
+found them to either be a misnomer (as in the case of the _"empty project"_
+repo) or incomplete. This assumes you are going to use the Urho3D CMake build
+system as much as possible.
 
 <!--more-->
 
 ## Base repository
-The [Using Urho3D library](https://urho3d.github.io/documentation/1.7/_using_library.html) official documentation page provides a decent starting point, that I'm essentially going to elaborate on, borrowing a little bit from the [Urho3D-Empty-Project](https://github.com/ArnisLielturks/Urho3D-Empty-Project) (which sadly is far more than an empty project) repo as needed.
 
-1. Clone the Urho3D [source repository](https://github.com/urho3d/Urho3D), we will copy the build system out from here (plus some basic resources).
+The [Using Urho3D library](https://urho3d.github.io/documentation/1.7/_using_library.html)
+official documentation page provides a decent starting point, that I'm
+essentially going to elaborate on, borrowing a little bit from the
+[Urho3D-Empty-Project](https://github.com/ArnisLielturks/Urho3D-Empty-Project)
+(which sadly is far more than an empty project) repo as needed.
+
+1. Clone the Urho3D [source repository](https://github.com/urho3d/Urho3D), we
+   will copy the build system out from here (plus some basic resources).
 1. Copy the **CMake** and **scripts** directories from Urho's sources into your project.
 1. ```mkdir -p bin/Data```
 1. Copy the **CoreData** dir from Urho3D's source **bin** directory.
-1. `mkdir Source` - you can tweak **CMakeLists.txt** afterwards to rename this to `src`..
+1. `mkdir Source` - you can tweak **CMakeLists.txt** afterwards to rename this
+   to `src`..
 
 ## CMakeLists.txt
-Again, the official documentation page gives you a head start on what you need, but you do need to tweak it and maybe borrow some things from the "Empty Project" repo. Consider something like this:
+
+Again, the official documentation page gives you a head start on what you need,
+but you do need to tweak it and maybe borrow some things from the "Empty
+Project" repo. Consider something like this:
+
 ```cmake
 # no whitespaces
 project (MyProjectName)
@@ -68,7 +85,10 @@ ADD_DEFINITIONS(
 ```
 
 ## Building
-You should probably use one of the scripts inside the **scripts** dir; there provide ways to build for other platforms (for example if you have automated builds for multiple platforms), though you can also just do the manual  
+
+You should probably use one of the scripts inside the **scripts** dir; there
+provide ways to build for other platforms (for example if you have automated
+builds for multiple platforms), though you can also just do the manual
 `mkdir build;cd build;cmake ..;make`  
 
 Though **script/cmake_generic.sh** is the equivalent.
